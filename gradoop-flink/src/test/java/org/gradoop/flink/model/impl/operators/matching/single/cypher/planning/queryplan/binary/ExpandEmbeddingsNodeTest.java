@@ -31,7 +31,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.gradoop.common.GradoopTestUtils.call;
-import static org.gradoop.flink.model.impl.operators.matching.single.cypher.common.pojos.EmbeddingTestUtils.*;
+import static org.gradoop.flink.model.impl.operators.matching.single.cypher.common.pojos.EmbeddingTestUtils.createEmbedding;
 import static org.junit.Assert.assertEquals;
 
 public class ExpandEmbeddingsNodeTest extends GradoopFlinkTestBase {

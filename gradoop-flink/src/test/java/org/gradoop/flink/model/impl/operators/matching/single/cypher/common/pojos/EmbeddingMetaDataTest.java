@@ -30,7 +30,12 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertNotSame;
 
 public class EmbeddingMetaDataTest {
 
@@ -322,7 +327,7 @@ public class EmbeddingMetaDataTest {
     metaData3.setEntryColumn("b", EntryType.VERTEX, 0);
     metaData3.setPropertyColumn("b", "age", 0);
 
-    assertTrue(metaData1.hashCode() == metaData2.hashCode());
-    assertFalse(metaData2.hashCode() == metaData3.hashCode());
+    assertSame(metaData1.hashCode(), metaData2.hashCode());
+    assertNotSame(metaData2.hashCode(), metaData3.hashCode());
   }
 }
