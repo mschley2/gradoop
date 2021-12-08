@@ -15,6 +15,7 @@
  */
 package org.gradoop.flink.model.impl;
 
+import com.google.common.collect.Lists;
 import org.gradoop.common.model.impl.pojo.EPGMEdge;
 import org.gradoop.common.model.impl.pojo.EPGMGraphHead;
 import org.gradoop.common.model.impl.pojo.EPGMVertex;
@@ -27,7 +28,6 @@ import java.util.List;
 
 import static org.gradoop.common.GradoopTestUtils.validateElementCollections;
 import static org.gradoop.common.GradoopTestUtils.validateGraphElementCollections;
-import static org.junit.Assert.assertEquals;
 
 public class LogicalGraphTest extends GradoopFlinkTestBase {
 
@@ -41,7 +41,13 @@ public class LogicalGraphTest extends GradoopFlinkTestBase {
     EPGMGraphHead outputGraphHead = loader.getLogicalGraphByVariable("g0")
       .getGraphHead().collect().get(0);
 
-    assertEquals("GraphHeads were not equal", inputGraphHead, outputGraphHead);
+    Collection<EPGMGraphHead> inputGraphHeads  = Lists.newArrayList();
+    Collection<EPGMGraphHead> outputGraphHeads  = Lists.newArrayList();
+
+    inputGraphHeads.add(inputGraphHead);
+    outputGraphHeads.add(outputGraphHead);
+
+    validateElementCollections(inputGraphHeads, outputGraphHeads);
   }
 
   @Test
